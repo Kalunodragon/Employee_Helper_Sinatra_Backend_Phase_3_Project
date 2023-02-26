@@ -14,8 +14,13 @@ ActiveRecord::Schema.define(version: 4) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "employee_id"
-    t.integer "shift_id"
-    t.string "day_of_week"
+    t.integer "sunday"
+    t.integer "monday"
+    t.integer "tuesday"
+    t.integer "wednesday"
+    t.integer "thursday"
+    t.integer "friday"
+    t.integer "saturday"
   end
 
   create_table "employees", force: :cascade do |t|
