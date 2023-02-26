@@ -1,3 +1,4 @@
 class Shift < ActiveRecord::Base
-    belongs_to :bid
+    has_many :bids
+    has_many :employees, through: :bids
 end

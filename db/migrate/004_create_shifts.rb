@@ -4,6 +4,7 @@ class CreateShifts < ActiveRecord::Migration[6.1]
       t.boolean :day_off
       t.string :start_time
       t.string :off_time
+      t.integer :bid_id
     end
   end
 end

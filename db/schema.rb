@@ -14,13 +14,8 @@ ActiveRecord::Schema.define(version: 4) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "employee_id"
-    t.integer "sunday"
-    t.integer "monday"
-    t.integer "tuesday"
-    t.integer "wednesday"
-    t.integer "thursday"
-    t.integer "friday"
-    t.integer "saturday"
+    t.integer "shift_id"
+    t.string "day_of_week"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -35,6 +30,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.boolean "day_off"
     t.string "start_time"
     t.string "off_time"
+    t.integer "bid_id"
   end
 
   create_table "stations", force: :cascade do |t|
