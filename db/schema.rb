@@ -12,25 +12,6 @@
 
 ActiveRecord::Schema.define(version: 13) do
 
-  create_table "bids", force: :cascade do |t|
-    t.integer "employee_id"
-    t.integer "sunday"
-    t.integer "monday"
-    t.integer "tuesday"
-    t.integer "wednesday"
-    t.integer "thursday"
-    t.integer "friday"
-    t.integer "saturday"
-  end
-
-  create_table "employees", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "employee_number"
-    t.integer "bid_id"
-    t.integer "station_id"
-  end
-
   create_table "lego_sets", force: :cascade do |t|
     t.string "name"
     t.integer "set_number"
@@ -48,19 +29,6 @@ ActiveRecord::Schema.define(version: 13) do
   create_table "owners", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-  end
-
-  create_table "shifts", force: :cascade do |t|
-    t.boolean "day_off"
-    t.string "start_time"
-    t.string "off_time"
-    t.integer "bid_id"
-  end
-
-  create_table "stations", force: :cascade do |t|
-    t.string "name"
-    t.string "state"
-    t.string "city_code"
   end
 
   create_table "themes", force: :cascade do |t|
