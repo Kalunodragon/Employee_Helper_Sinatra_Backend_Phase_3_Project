@@ -37,5 +37,5 @@ puts "     "
 
 puts "DONE SEEDING LEGO"
 puts "     "
-puts "HEY WAIT THIS DATABASE IS NOW INFESTED WITH LEGO SEEDS!!!"
+puts "THE LEGO-BASE IS COMPLETE"
 puts "     "
