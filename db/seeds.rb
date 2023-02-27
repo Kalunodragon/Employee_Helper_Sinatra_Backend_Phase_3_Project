@@ -25,6 +25,9 @@ puts "Connecting Notes"
 Note.create(lego_set_id: 1, owner_id: 1, body: "Most amazing set for Cal Kestis! Can't wait to build it!")
 Note.create(lego_set_id: 2, owner_id: 1, body: "Second most interesting set")
 Note.create(lego_set_id: 5, owner_id: 2, body: "We need a new vase to put all these flowers in!")
+Note.create(lego_set_id: 3, owner_id: 1)
+Note.create(lego_set_id: 4, owner_id: 1)
+Note.create(lego_set_id: 6, owner_id: 2)
 puts "Notes Connected"
 puts "     "
 
@@ -33,7 +36,6 @@ Owner.create(first_name: "Andrew", last_name: "Onulak")
 Owner.create(first_name: "Paula", last_name: "Onulak")
 puts "Owners built"
 puts "     "
-
 
 puts "DONE SEEDING LEGO"
 puts "     "
