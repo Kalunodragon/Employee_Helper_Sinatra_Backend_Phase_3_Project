@@ -1,3 +1,5 @@
+require "faker"
+
 puts "🌱 Brick building the (Lego)base..."
 puts "     "
 puts "SEEDING LEGO SIDE"
@@ -36,6 +38,11 @@ Owner.create(first_name: "Andrew", last_name: "Onulak")
 Owner.create(first_name: "Paula", last_name: "Onulak")
 puts "Owners built"
 puts "     "
+
+
+20.times do
+  Owner.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
+end
 
 puts "DONE SEEDING LEGO"
 puts "     "
