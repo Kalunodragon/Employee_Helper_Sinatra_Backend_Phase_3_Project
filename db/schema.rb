@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 13) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "employee_id"
@@ -31,6 +31,25 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer "station_id"
   end
 
+  create_table "lego_sets", force: :cascade do |t|
+    t.string "name"
+    t.integer "set_number"
+    t.integer "peices"
+    t.integer "theme_id"
+    t.integer "age"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.integer "lego_set_id"
+    t.integer "owner_id"
+    t.string "body"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+  end
+
   create_table "shifts", force: :cascade do |t|
     t.boolean "day_off"
     t.string "start_time"
@@ -42,6 +61,10 @@ ActiveRecord::Schema.define(version: 4) do
     t.string "name"
     t.string "state"
     t.string "city_code"
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.string "theme"
   end
 
 end
