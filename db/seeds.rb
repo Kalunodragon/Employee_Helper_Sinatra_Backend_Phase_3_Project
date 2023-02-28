@@ -41,7 +41,13 @@ puts "     "
 
 
 20.times do
-  Owner.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
+  Owner.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+  game = Faker::Boolean.boolean(true_ratio: 0.75)
+  if game == true
+    Note.create(lego_set_id: rand(1..6), owner_id: rand(1..20))
+  else
+    Note.create(lego_set_id: rand(1..6), owner_id: rand(1..20), body: Faker::Quote.yoda)
+  end
 end
 
 puts "DONE SEEDING LEGO"
