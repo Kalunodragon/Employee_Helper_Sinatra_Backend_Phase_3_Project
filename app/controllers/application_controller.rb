@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/lego_sets" do
-    LegoSet.all.order(name: :ASC).to_json
+    LegoSet.all.order(name: :ASC).to_json(include: { theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
   # get "/lego_sets/:value" do
