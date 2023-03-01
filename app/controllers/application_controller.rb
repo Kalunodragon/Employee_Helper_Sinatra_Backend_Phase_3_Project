@@ -15,7 +15,21 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/lego_sets" do
-    LegoSet.all.to_json
+    LegoSet.all.order(name: :ASC).to_json
   end
+
+  # get "/lego_sets/:value" do
+  #   type = if (params[:value] == "alphabetical")
+  #     LegoSet.all.order(name: :ASC).to_json
+  #   elsif (params[:value] == "peices")
+  #     LegoSet.all.order(peices: :DESC).to_json
+  #   elsif (params[:value] == "set_number")
+  #     LegoSet.all.order(set_number: :ASC).to_json
+  #   elsif (params[:value] == "theme_id")
+  #     LegoSet.all.order(theme_id: :ASC).to_json
+  #   else (params[:value])
+  #     LegoSet.all.to_json
+  #   end
+  # end
 
 end
