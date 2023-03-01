@@ -6,4 +6,12 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+  get "/lego_set/:id" do
+    search = if (params[:id] == "random")
+      LegoSet.find(rand(1..LegoSet.all.size)).to_json
+    else
+      LegoSet.find(params[:id]).to_json
+    end
+  end
+
 end
