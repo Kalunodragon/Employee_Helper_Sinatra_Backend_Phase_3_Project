@@ -20,6 +20,9 @@ LegoSet.create(name: "Resistance Y-Wing Starfighter", set_number: 75249, peices:
 LegoSet.create(name: "AT-AT vs Tauntaun Microfighters", set_number: 75298, peices: 205, theme_id: 1, age: 6)
 LegoSet.create(name: "Wildflower Bouquet", set_number: 10313, peices: 939, theme_id: 4, age: 18)
 LegoSet.create(name: "Dried Flower Centerpeice", set_number: 10314, peices: 812, theme_id: 4, age: 18)
+LegoSet.create(name: "The Hulk", set_number: 41592, peices: 93, theme_id: 3, age: 10)
+LegoSet.create(name: "Jeep Wrangler", set_number: 42122, peices: 665, theme_id: 2, age: 9)
+LegoSet.create(name: "Poe's X-Wing Fighter", set_number: 75102, peices: 717, theme_id: 1, age: 8)
 puts "LegoSets Collected"
 puts "     "
 
@@ -44,9 +47,9 @@ puts "     "
   Owner.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
   game = Faker::Boolean.boolean(true_ratio: 0.75)
   if game == true
-    Note.create(lego_set_id: rand(1..6), owner_id: rand(1..20))
+    Note.create(lego_set_id: rand(1..LegoSet.all.size), owner_id: rand(1..Owner.all.size))
   else
-    Note.create(lego_set_id: rand(1..6), owner_id: rand(1..20), body: Faker::Quote.yoda)
+    Note.create(lego_set_id: rand(1..LegoSet.all.size), owner_id: rand(1..Owner.all.size), body: Faker::Quote.yoda)
   end
 end
 
