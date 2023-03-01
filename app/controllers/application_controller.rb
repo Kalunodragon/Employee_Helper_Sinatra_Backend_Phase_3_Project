@@ -1,7 +1,8 @@
+require 'pry'
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
-  # Add your routes here
+  # All Get Requests
   get "/" do
     { message: "Good luck with your project!" }.to_json
   end
@@ -35,5 +36,19 @@ class ApplicationController < Sinatra::Base
   #     LegoSet.all.to_json
   #   end
   # end
+
+  # All Post Requests
+  post  "/lego_sets" do
+    id_for_theme = Theme.find_or_create_by(theme: params[:theme]).id
+
+    lego_set = LegoSet.create(
+      name: params[:name],
+      set_number: params[:setNumber],
+      peices: params[:pieces],
+      age: params[:age],
+      theme_id: id_for_theme
+    )
+    lego_set.to_json
+  end
 
 end
