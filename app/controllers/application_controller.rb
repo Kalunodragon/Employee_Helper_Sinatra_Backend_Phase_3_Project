@@ -14,4 +14,8 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get "/lego_sets" do
+    LegoSet.all.to_json
+  end
+
 end
