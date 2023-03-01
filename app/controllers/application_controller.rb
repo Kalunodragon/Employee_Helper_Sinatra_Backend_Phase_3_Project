@@ -18,6 +18,10 @@ class ApplicationController < Sinatra::Base
     LegoSet.all.order(name: :ASC).to_json(include: { theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
+  get "/themes" do
+    Theme.all.order(theme: :ASC).to_json(only: :theme)
+  end
+
   # get "/lego_sets/:value" do
   #   type = if (params[:value] == "alphabetical")
   #     LegoSet.all.order(name: :ASC).to_json
