@@ -10,6 +10,8 @@ class Owner < ActiveRecord::Base
         total
     end
 
+    # Make a method named total_sets that returns how many sets that an owner has
+
     def owned_themes
         array = []
         self.lego_sets.each do |e|
