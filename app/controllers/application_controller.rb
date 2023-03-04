@@ -51,4 +51,21 @@ class ApplicationController < Sinatra::Base
     lego_set.to_json
   end
 
+  # All Patch Requests
+  patch "lego_sets" do
+    id_for_theme = Theme.find_or_create_by(theme: params[:theme]).id
+
+    set_to_update = LegoSet.find(params[:id])
+    set_to_update.update(
+      name: params[:name],
+      set_number: params[:setNumber],
+      peices: params[:pieces],
+      age: params[:age],
+      theme_id: id_for_theme
+    )
+    set_to_update.to_json
+  end
+
+  # All Delete Requests
+
 end
