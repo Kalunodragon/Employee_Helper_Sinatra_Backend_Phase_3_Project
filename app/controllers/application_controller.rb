@@ -29,12 +29,12 @@ class ApplicationController < Sinatra::Base
 
     lego_set = LegoSet.create(
       name: params[:name],
-      set_number: params[:setNumber],
-      peices: params[:pieces],
+      set_number: params[:set_number],
+      peices: params[:peices],
       age: params[:age],
       theme_id: id_for_theme
     )
-    lego_set.to_json
+    lego_set.to_json(include: { theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
   # All Patch Requests
