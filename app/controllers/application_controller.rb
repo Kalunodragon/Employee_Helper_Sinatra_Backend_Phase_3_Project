@@ -12,7 +12,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/lego_sets" do
-    LegoSet.all.order(name: :ASC).to_json(include: { theme: { only: [:theme]}, notes: { only: [:body]}})
+    LegoSet.all.order(name: :ASC).to_json(include: {
+       theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
   get "/themes" do
@@ -20,7 +21,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/owners" do
-    Owner.all.order(first_name: :ASC).to_json(include: { lego_sets: { only: [:name]}})
+    Owner.all.order(first_name: :ASC).to_json(include: {
+       lego_sets: { only: [:name, :id]}, notes: { only: [:body, :lego_set_id]}})
   end
 
   # All Post Requests
@@ -34,7 +36,16 @@ class ApplicationController < Sinatra::Base
       age: params[:age],
       theme_id: id_for_theme
     )
-    lego_set.to_json(include: { theme: { only: [:theme]}, notes: { only: [:body]}})
+    lego_set.to_json(include: {
+       theme: { only: [:theme]}, notes: { only: [:body]}})
+  end
+
+  post "/owners" do
+    person = Owner.create(
+      first_name: params[:first_name],
+      last_name: params[:last_name]
+    )
+    person.to_json
   end
 
   # All Patch Requests
@@ -49,7 +60,8 @@ class ApplicationController < Sinatra::Base
       age: params[:age],
       theme_id: id_for_theme
     )
-    set_to_update.to_json(include: { theme: { only: [:theme]}, notes: { only: [:body]}})
+    set_to_update.to_json(include: {
+       theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
   # All Delete Requests
