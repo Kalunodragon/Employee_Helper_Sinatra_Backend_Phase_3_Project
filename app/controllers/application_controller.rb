@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
 
   get "/owners" do
     Owner.all.order(first_name: :ASC).to_json(include: {
-       lego_sets: { only: [:name, :id]}, notes: { only: [:body, :lego_set_id]}})
+       lego_sets: { only: [:name, :id]}, notes: { only: [:body, :lego_set_id, :id]}})
   end
 
   # All Post Requests
