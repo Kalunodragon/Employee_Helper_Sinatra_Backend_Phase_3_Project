@@ -16,6 +16,10 @@ class ApplicationController < Sinatra::Base
        theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
+  get "/lego_sets_names" do
+    LegoSet.all.order(name: :ASC).to_json(only: [:name, :id])
+  end
+
   get "/themes" do
     Theme.all.order(theme: :ASC).to_json(only: :theme)
   end
@@ -45,7 +49,19 @@ class ApplicationController < Sinatra::Base
       first_name: params[:first_name],
       last_name: params[:last_name]
     )
-    person.to_json
+    person.to_json(include: {
+      lego_sets: { only: [:name, :id]}, notes: { only: [:body, :lego_set_id]}})
+  end
+
+  post "/notes" do
+    body_info = params[:body] == '' ? nil : params[:body]
+
+    new_note = Note.create(
+      owner_id: params[:owner_id],
+      lego_set_id: params[:lego_set_id],
+      body: body_info
+    )
+    new_note.to_json
   end
 
   # All Patch Requests
