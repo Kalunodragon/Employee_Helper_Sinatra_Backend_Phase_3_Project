@@ -3,10 +3,6 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # All Get Requests
-  get "/" do
-    { message: "Good luck with your project!" }.to_json
-  end
-
   get "/lego_set/:id" do
     search = if (params[:id] == "random")
       LegoSet.find(rand(1..LegoSet.all.size)).to_json
