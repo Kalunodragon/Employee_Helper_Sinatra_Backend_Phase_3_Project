@@ -23,20 +23,6 @@ class ApplicationController < Sinatra::Base
     Theme.all.order(theme: :ASC).to_json(only: :theme)
   end
 
-  # get "/lego_sets/:value" do
-  #   type = if (params[:value] == "alphabetical")
-  #     LegoSet.all.order(name: :ASC).to_json
-  #   elsif (params[:value] == "peices")
-  #     LegoSet.all.order(peices: :DESC).to_json
-  #   elsif (params[:value] == "set_number")
-  #     LegoSet.all.order(set_number: :ASC).to_json
-  #   elsif (params[:value] == "theme_id")
-  #     LegoSet.all.order(theme_id: :ASC).to_json
-  #   else (params[:value])
-  #     LegoSet.all.to_json
-  #   end
-  # end
-
   # All Post Requests
   post  "/lego_sets" do
     id_for_theme = Theme.find_or_create_by(theme: params[:theme]).id
@@ -67,5 +53,10 @@ class ApplicationController < Sinatra::Base
   end
 
   # All Delete Requests
+  delete "/lego_set/:id" do
+    set_to_delete = LegoSet.find_by(id: params[:id])
+    set_to_delete.destroy
+    set_to_delete.to_json
+  end
 
 end
