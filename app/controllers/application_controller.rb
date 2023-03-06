@@ -19,6 +19,10 @@ class ApplicationController < Sinatra::Base
     Theme.all.order(theme: :ASC).to_json(only: :theme)
   end
 
+  get "/owners" do
+    Owner.all.order(first_name: :ASC).to_json(include: { lego_sets: { only: [:name]}})
+  end
+
   # All Post Requests
   post  "/lego_sets" do
     id_for_theme = Theme.find_or_create_by(theme: params[:theme]).id
