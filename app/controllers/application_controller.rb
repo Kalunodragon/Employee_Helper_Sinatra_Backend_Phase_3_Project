@@ -80,6 +80,12 @@ class ApplicationController < Sinatra::Base
        theme: { only: [:theme]}, notes: { only: [:body]}})
   end
 
+  patch "/note/patch" do
+    updated_info = nil
+
+    binding.pry    
+  end
+
   # All Delete Requests
   delete "/lego_set/:id" do
     set_to_delete = LegoSet.find_by(id: params[:id])
