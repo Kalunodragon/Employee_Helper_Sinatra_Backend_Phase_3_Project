@@ -93,4 +93,10 @@ class ApplicationController < Sinatra::Base
     set_to_delete.to_json
   end
 
+  delete "/note/delete/:id" do
+    note_to_delete = Note.find(params[:id])
+    note_to_delete.destroy
+    note_to_delete.to_json
+  end
+
 end
