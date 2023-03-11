@@ -82,8 +82,8 @@ class ApplicationController < Sinatra::Base
 
   patch "/note/patch" do
     updated_info = nil
-
-    binding.pry    
+    update_note = Note.find(params[:note_id]).update(body: updated_info)
+    update_note.to_json
   end
 
   # All Delete Requests
