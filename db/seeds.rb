@@ -45,8 +45,8 @@ puts "     "
 
 20.times do
   Owner.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-  game = Faker::Boolean.boolean(true_ratio: 0.75)
-  if game == true
+  skip_note = Faker::Boolean.boolean(true_ratio: 0.75)
+  if skip_note == true
     Note.create(lego_set_id: rand(1..LegoSet.all.size), owner_id: rand(1..Owner.all.size))
   else
     Note.create(lego_set_id: rand(1..LegoSet.all.size), owner_id: rand(1..Owner.all.size), body: Faker::Quote.yoda)
